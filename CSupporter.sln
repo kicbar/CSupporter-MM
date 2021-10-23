@@ -3,9 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{92192E28-7A9C-4B22-85C2-2308987D872C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{1C239D24-C777-4643-A2A3-4A6921325880}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{CAEA4D7A-4CE0-4FEA-80E7-ACD7DEC3BF06}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{60F9AE66-0B1F-49B0-85B5-4218C55EFA68}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1C239D24-C777-4643-A2A3-4A6921325880} = {92192E28-7A9C-4B22-85C2-2308987D872C}
+		{CAEA4D7A-4CE0-4FEA-80E7-ACD7DEC3BF06} = {92192E28-7A9C-4B22-85C2-2308987D872C}
+		{60F9AE66-0B1F-49B0-85B5-4218C55EFA68} = {92192E28-7A9C-4B22-85C2-2308987D872C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {570CDA38-47A1-4C60-8B80-4A83A4C32BB3}
