@@ -1,3 +1,4 @@
+using CSupporter.Modules.Contractors;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,7 @@ namespace CSupporter.Core
         {
 
             services.AddControllers();
+            services.AddContractorsConfiguration();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CSupporter.Core", Version = "v1" });
