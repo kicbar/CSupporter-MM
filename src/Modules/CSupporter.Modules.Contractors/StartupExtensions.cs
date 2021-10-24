@@ -6,7 +6,7 @@ namespace CSupporter.Modules.Contractors
 {
     internal static class StartupExtensions
     {
-        public static IServiceCollection AddContractorsConfiguration(this IServiceCollection services)
+        public static IServiceCollection AddContractorsConfig(this IServiceCollection services)
         {
             return services;
         }
