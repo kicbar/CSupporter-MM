@@ -1,11 +1,13 @@
 using CSupporter.Modules.Contractors;
+using CSupporter.Modules.Factures;
+using CSupporter.Modules.Income;
+using CSupporter.Modules.Products;
 using CSupporter.Shared.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 
 namespace CSupporter.Core
 {
@@ -21,7 +23,10 @@ namespace CSupporter.Core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddInfrastructure()
-                    .AddContractorsConfig();
+                    .AddContractorsConfig()
+                    .AddFacturesConfig()
+                    .AddIncomeConfig()
+                    .AddProductsConfig();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
