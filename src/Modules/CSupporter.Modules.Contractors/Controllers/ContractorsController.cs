@@ -2,8 +2,8 @@
 
 namespace CSupporter.Modules.Contractors.Controllers
 {
-    [Route(template:"contractors-module")]
-    public class ContractorsController : ControllerBase
+
+    public class ContractorsController : BaseController
     {
         [HttpGet]
         public ActionResult<string> Get() => "Hello Contracors!";
