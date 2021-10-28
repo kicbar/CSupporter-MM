@@ -7,5 +7,15 @@ namespace CSupporter.Modules.Contractors.Controllers
     public class BaseController : ControllerBase
     {
         protected const string BasePath = "contractors-module/";
+
+        protected ActionResult<T> OkOrNotFound<T>(T model)
+        {
+            if (model is null)
+            {
+                return NotFound();
+            }
+
+            return Ok(model);
+        }
     }
 }

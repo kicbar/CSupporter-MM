@@ -2,6 +2,7 @@
 using CSupporter.Modules.Contractors.Services.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Contractors.Controllers
@@ -16,14 +17,18 @@ namespace CSupporter.Modules.Contractors.Controllers
             _contractorService = contractorService;
         }
 
-        [HttpGet]
-        public ActionResult<string> Get() => "Hello Contracors!";
+/*        [HttpGet]
+        public ActionResult<string> Get() => "Hello Contracors!";*/
 
         [HttpGet("{id}")]
         public async Task<ActionResult<ContractorDetailsDto>> GetContractor(Guid id)
-        {
-            return await _contractorService.GetAsync(id);
-        }
+            => OkOrNotFound(await _contractorService.GetAsync(id));
+
+
+        [HttpGet]
+        public async Task<ActionResult<IReadOnlyList<ContractorDto>>> GetAllContractors()
+            => Ok(await _contractorService.GetAllAsync());
+
 
     }
 }

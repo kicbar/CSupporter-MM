@@ -23,9 +23,9 @@ namespace CSupporter.Modules.Contractors.Repositories
             return await _dbContext.Contractors.Where(product => product.Id == id).FirstOrDefaultAsync();
         }
 
-        public Task<IReadOnlyList<Contractor>> GetAllAsync()
+        public async Task<IReadOnlyList<Contractor>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _dbContext.Contractors.ToListAsync();
         }
 
         public Task AddAsync(Contractor contractor)
