@@ -6,7 +6,7 @@ using System;
 
 namespace CSupporter.Modules.Contractors.Data
 {
-    class CSupporterDbContext : DbContext
+    public class CSupporterDbContext : DbContext
     {
         public CSupporterDbContext(ILogger<CSupporterDbContext> logger)
         {

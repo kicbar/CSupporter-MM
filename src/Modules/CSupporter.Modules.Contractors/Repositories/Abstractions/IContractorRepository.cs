@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Contractors.Repositories.Abstractions
 {
-    internal interface IContractorRepository
+    public interface IContractorRepository
     {
         Task<Contractor> GetAsync(Guid id);
         Task<IReadOnlyList<Contractor>> GetAllAsync();

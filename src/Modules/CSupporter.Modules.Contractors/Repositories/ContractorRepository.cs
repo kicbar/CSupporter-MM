@@ -1,18 +1,26 @@
-﻿using CSupporter.Modules.Contractors.Entities;
+﻿using CSupporter.Modules.Contractors.Data;
+using CSupporter.Modules.Contractors.Entities;
 using CSupporter.Modules.Contractors.Repositories.Abstractions;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Contractors.Repositories
 {
-    internal class ContractorRepository : IContractorRepository
+    public class ContractorRepository : IContractorRepository
     {
-        public Task<Contractor> GetAsync(Guid id)
+        private readonly CSupporterDbContext _dbContext;
+
+        public ContractorRepository(CSupporterDbContext dbContext)
         {
-            throw new NotImplementedException();
+            _dbContext = dbContext;
+        }
+
+        public async Task<Contractor> GetAsync(Guid id)
+        {
+            return await _dbContext.Contractors.Where(product => product.Id == id).FirstOrDefaultAsync();
         }
 
         public Task<IReadOnlyList<Contractor>> GetAllAsync()

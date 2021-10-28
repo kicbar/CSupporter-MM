@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Contractors.Services
 {
-    internal class ContractorService : IContractorService
+    public class ContractorService : IContractorService
     {
         private readonly IContractorRepository _contractorRepository;
 
