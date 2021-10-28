@@ -5,6 +5,7 @@ using CSupporter.Modules.Contractors.Repositories.Abstractions;
 using CSupporter.Modules.Contractors.Services.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Contractors.Services
@@ -35,14 +36,24 @@ namespace CSupporter.Modules.Contractors.Services
             });
         }
 
-        public Task<ContractorDetailsDto> GetAsync(Guid id)
+        public async Task<ContractorDetailsDto> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var contractor = await _contractorRepository.GetAsync(id);
+
+            if (contractor is null)
+                return null;
+
+            return Map<ContractorDetailsDto>(contractor);
         }
 
-        public Task<IReadOnlyList<ContractorDto>> GetAllAsync()
+        public async Task<IReadOnlyList<ContractorDto>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var contractors = await _contractorRepository.GetAllAsync();
+
+            if (contractors is null)
+                return null;
+
+            return contractors.Select(Map<ContractorDto>).ToList();
         }
 
         public async Task UpdateAsync(ContractorDto dto)
@@ -70,5 +81,17 @@ namespace CSupporter.Modules.Contractors.Services
 
             await _contractorRepository.DeleteAsync(contractor);
         }
+
+        private static T Map<T>(Contractor contractor) where T : ContractorDto, new()
+        => new T()
+        {
+            Id = contractor.Id,
+            FirstName = contractor.FirstName,
+            LastName = contractor.LastName,
+            Address = contractor.Address,
+            CompanyName = contractor.CompanyName,
+            CompanyDetails = contractor.CompanyDetails,
+            NIP = contractor.NIP
+        };
     }
 }
