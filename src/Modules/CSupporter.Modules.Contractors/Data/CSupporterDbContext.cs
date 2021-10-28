@@ -3,10 +3,6 @@ using CSupporter.Shared.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Contractors.Data
 {
@@ -20,6 +16,22 @@ namespace CSupporter.Modules.Contractors.Data
         private readonly ILogger<CSupporterDbContext> _logger;
 
         public DbSet<Contractor> Contractors { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Contractor>().HasData(new Contractor
+            {
+                Id = Guid.NewGuid(),
+                FirstName = "Richard",
+                LastName = "Nowak",
+                Address = "Warszawa, ul. Przedszkolna 15",
+                CompanyName = "GM Prime RN",
+                CompanyDetails = "--",
+                NIP = "912-111-09-10"
+            });
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
