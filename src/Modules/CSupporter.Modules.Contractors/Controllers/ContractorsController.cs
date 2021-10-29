@@ -17,9 +17,6 @@ namespace CSupporter.Modules.Contractors.Controllers
             _contractorService = contractorService;
         }
 
-/*        [HttpGet]
-        public ActionResult<string> Get() => "Hello Contracors!";*/
-
         [HttpGet("{id}")]
         public async Task<ActionResult<ContractorDetailsDto>> GetContractor(Guid id)
             => OkOrNotFound(await _contractorService.GetAsync(id));
@@ -33,6 +30,21 @@ namespace CSupporter.Modules.Contractors.Controllers
         {
             await _contractorService.AddAsync(dto);
             return CreatedAtAction(nameof(GetContractor), routeValues: new {id = dto.Id}, value: null);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateContractors(Guid id, ContractorDto dto)
+        {
+            dto.Id = id;
+            await _contractorService.UpdateAsync(dto);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteContractors(Guid id)
+        {
+            await _contractorService.DeleteAsync(id);
+            return NoContent();
         }
     }
 }
