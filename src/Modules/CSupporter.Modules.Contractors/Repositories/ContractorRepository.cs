@@ -34,21 +34,25 @@ namespace CSupporter.Modules.Contractors.Repositories
         public Task AddAsync(Contractor contractor)
         {
             _dbContext.Contractors.AddAsync(contractor);
-
-            _logger.LogInformation("ADD ASYNC WYKONANY POPRAWNIE");
-
             _dbContext.SaveChangesAsync();
+
             return Task.CompletedTask;
         }
 
         public Task UpdateAsync(Contractor contractor)
         {
-            throw new NotImplementedException();
+            _dbContext.Contractors.Update(contractor);
+            _dbContext.SaveChangesAsync();
+
+            return Task.CompletedTask;
         }
 
         public Task DeleteAsync(Contractor contractor)
         {
-            throw new NotImplementedException();
+            _dbContext.Contractors.Remove(contractor);
+            _dbContext.SaveChangesAsync();
+
+            return Task.CompletedTask;
         }
     }
 }
