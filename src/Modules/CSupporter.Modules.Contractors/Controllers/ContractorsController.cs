@@ -24,11 +24,15 @@ namespace CSupporter.Modules.Contractors.Controllers
         public async Task<ActionResult<ContractorDetailsDto>> GetContractor(Guid id)
             => OkOrNotFound(await _contractorService.GetAsync(id));
 
-
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<ContractorDto>>> GetAllContractors()
             => Ok(await _contractorService.GetAllAsync());
 
-
+        [HttpPost]
+        public async Task<ActionResult> PostContractors(ContractorDto dto)
+        {
+            await _contractorService.AddAsync(dto);
+            return CreatedAtAction(nameof(GetContractor), routeValues: new {id = dto.Id}, value: null);
+        }
     }
 }

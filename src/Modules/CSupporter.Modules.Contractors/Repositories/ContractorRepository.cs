@@ -2,6 +2,7 @@
 using CSupporter.Modules.Contractors.Entities;
 using CSupporter.Modules.Contractors.Repositories.Abstractions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace CSupporter.Modules.Contractors.Repositories
     public class ContractorRepository : IContractorRepository
     {
         private readonly CSupporterDbContext _dbContext;
+        private readonly ILogger<ContractorRepository> _logger;
 
-        public ContractorRepository(CSupporterDbContext dbContext)
+        public ContractorRepository(CSupporterDbContext dbContext, ILogger<ContractorRepository> logger)
         {
             _dbContext = dbContext;
+            _logger = logger;
         }
 
         public async Task<Contractor> GetAsync(Guid id)
@@ -30,7 +33,12 @@ namespace CSupporter.Modules.Contractors.Repositories
 
         public Task AddAsync(Contractor contractor)
         {
-            throw new NotImplementedException();
+            _dbContext.Contractors.AddAsync(contractor);
+
+            _logger.LogInformation("ADD ASYNC WYKONANY POPRAWNIE");
+
+            _dbContext.SaveChangesAsync();
+            return Task.CompletedTask;
         }
 
         public Task UpdateAsync(Contractor contractor)
