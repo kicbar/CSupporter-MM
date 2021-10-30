@@ -21,5 +21,20 @@ namespace CSupporter.Modules.View.Controllers
             var response = await _requestSenderService.SendGetAllRequest();
             return View(response);
         }
+
+        public async Task<IActionResult> ContractorCreate()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ContractorEdit()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ContractorDelete()
+        {
+            return View();
+        }
     }
 }

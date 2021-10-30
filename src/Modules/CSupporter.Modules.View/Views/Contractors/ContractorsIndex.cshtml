@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<CSupporter.Modules.Contractors.DTO.ContractorDto>
-
+@{
+    ViewData["Title"] = "Contractors";
+}
 <br />
 <br />
 <div class="container p-4 border">
@@ -8,7 +10,7 @@
             <h1 class="text-primary">Contractors List</h1>
         </div>
         <div class="col text-end pt-1">
-            <a asp-action="CreateContractor" class="btn btn-outline-primary float-right"><i class="fas fa-plus"></i> + Add New Contractor</a>
+            <a asp-action="ContractorCreate" class="btn btn-outline-primary float-right"><i class="fas fa-plus"></i> + Add New Contractor</a>
         </div>
     </div>
     <table class="table">
@@ -37,32 +39,31 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @item.FirstName
-                </td>
-                <td>
-                    @item.LastName
-                </td>
-                <td>
-                    @item.CompanyName
-                </td>
-                <td>
-                    @item.NIP
-                </td>
-                <td>
-                    @item.Address
-                </td>
-                <td>
-                    <a asp-action="ContractorEdit" class="btn btn-success w-auto" asp-route-productId="@item.Id">
-                        Edit
-                    </a>
-                    <a asp-action="ContractorDelete" class="btn btn-danger w-auto" asp-route-productId="@item.Id">
-                        Delete
-                    </a>
-                </td>
-            </tr>
-}
+<tr>
+    <td>
+        @item.FirstName
+    </td>
+    <td>
+        @item.LastName
+    </td>
+    <td>
+        @item.CompanyName
+    </td>
+    <td>
+        @item.NIP
+    </td>
+    <td>
+        @item.Address
+    </td>
+    <td>
+        <a asp-action="ContractorEdit" class="btn btn-success w-auto" asp-route-productId="@item.Id">
+            Edit
+        </a>
+        <a asp-action="ContractorDelete" class="btn btn-danger w-auto" asp-route-productId="@item.Id">
+            Delete
+        </a>
+    </td>
+</tr>}
         </tbody>
     </table>
 </div>
