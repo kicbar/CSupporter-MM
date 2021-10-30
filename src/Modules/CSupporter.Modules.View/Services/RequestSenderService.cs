@@ -1,4 +1,5 @@
 ﻿using CSupporter.Modules.Contractors.DTO;
+using CSupporter.Modules.View.Models;
 using CSupporter.Modules.View.Services.IServices;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -17,15 +18,14 @@ namespace CSupporter.Modules.View.Services
             _logger = logger;
         }
 
-        public async Task<List<ContractorDto>> SendGetRequest()
+        public async Task<List<ContractorDto>> SendGetAllRequest()
         {
             List<ContractorDto> contractorList = new List<ContractorDto>();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync("https://localhost:44324/contractors-module/Contractors"))
+                using (var response = await httpClient.GetAsync(ApiData.ApiAddress + "/contractors-module/Contractors"))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    _logger.LogInformation($"[RRS] reutrned response {apiResponse}");
                     contractorList = JsonConvert.DeserializeObject<List<ContractorDto>>(apiResponse);
                     _logger.LogInformation($"[RRS] transfered response {apiResponse}");
                 }

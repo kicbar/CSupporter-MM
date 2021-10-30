@@ -18,9 +18,8 @@ namespace CSupporter.Modules.View.Controllers
         public async Task<IActionResult> ContractorsIndex()
         {
             List<ContractorDto> contractorsDto = new List<ContractorDto>();
-            var response = await _requestSenderService.SendGetRequest();
+            var response = await _requestSenderService.SendGetAllRequest();
             return View(response);
         }
-
     }
 }

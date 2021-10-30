@@ -6,6 +6,6 @@ namespace CSupporter.Modules.View.Services.IServices
 {
     public interface IRequestSenderService
     {
-        Task<List<ContractorDto>> SendGetRequest();
+        Task<List<ContractorDto>> SendGetAllRequest();
     }
 }
