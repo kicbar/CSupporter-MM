@@ -7,5 +7,7 @@ namespace CSupporter.Modules.View.Services.IServices
     public interface IRequestSenderService
     {
         Task<List<ContractorDto>> SendGetAllRequest();
+        Task<ContractorDto> SendGetRequest();
+        Task<ContractorDto> SendPostRequest(ContractorDto contractorDto);
     }
 }

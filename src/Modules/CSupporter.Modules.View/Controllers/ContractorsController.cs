@@ -22,10 +22,33 @@ namespace CSupporter.Modules.View.Controllers
             return View(response);
         }
 
+
         public async Task<IActionResult> ContractorCreate()
         {
             return View();
         }
+        /*        [HttpPost]
+                public async Task<IActionResult> ContractorCreate(ContractorDto contractorDto)
+                {
+                    var response = await _requestSenderService.SendPostRequest(contractorDto);
+                    return View(response);
+                }*/
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ContractorCreate(ContractorDto contractorDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _requestSenderService.SendPostRequest(contractorDto);
+                if (response != null)
+                {
+                    return RedirectToAction(nameof(ContractorsIndex));
+                }
+            }
+            return View(contractorDto);
+        }
+
 
         public async Task<IActionResult> ContractorEdit()
         {
