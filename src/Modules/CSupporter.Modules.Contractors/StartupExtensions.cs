@@ -15,7 +15,7 @@ namespace CSupporter.Modules.Contractors
         {
             services.AddTransient<IContractorRepository, ContractorRepository>();
             services.AddScoped<IContractorService, ContractorService>();
-            
+
             services.AddDbContext<CSupporterDbContext>();
             return services;
         }

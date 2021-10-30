@@ -5,23 +5,24 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace CSupporter.Modules.View.Controllers
 {
-    public class HomeController : Controller
+    public class ContractorsController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly HttpClient _httpClient;
+        private readonly ILogger<ContractorsController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public ContractorsController(HttpClient httpClient, ILogger<ContractorsController> logger)
         {
+            _httpClient = httpClient;
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> ContractorIndex()
         {
             List<ContractorDto> contractorList = new List<ContractorDto>();
             using (var httpClient = new HttpClient())
@@ -34,22 +35,6 @@ namespace CSupporter.Modules.View.Controllers
                 }
             }
             return View(contractorList);
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult Privet()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
