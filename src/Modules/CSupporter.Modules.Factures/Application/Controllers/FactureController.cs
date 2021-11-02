@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace CSupporter.Modules.Factures.Application.Controllers
 {
     [ApiController]
+    [Route("api/facture")]
     public class FactureController : ControllerBase
     {
         private readonly IFactureService _factureService;
