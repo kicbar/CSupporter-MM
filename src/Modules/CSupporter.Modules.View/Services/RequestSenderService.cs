@@ -29,7 +29,6 @@ namespace CSupporter.Modules.View.Services
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     contractorList = JsonConvert.DeserializeObject<List<ContractorDto>>(apiResponse);
-                    _logger.LogInformation($"[RRS] - [SendGetAllRequest] transfered response {apiResponse}");
                 }
             }
             return contractorList;
@@ -44,7 +43,6 @@ namespace CSupporter.Modules.View.Services
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     contractor = JsonConvert.DeserializeObject<ContractorDto>(apiResponse);
-                    _logger.LogInformation($"[RRS] - [SendGetRequest] transfered response {apiResponse}");
                 }
             }
             return contractor;
@@ -60,7 +58,6 @@ namespace CSupporter.Modules.View.Services
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     contractor = JsonConvert.DeserializeObject<ContractorDto>(apiResponse);
-                    _logger.LogInformation($"[RRS] - [SendPostRequest] transfered response {contractor}");
                 }
             }
             return contractor;
@@ -76,7 +73,19 @@ namespace CSupporter.Modules.View.Services
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     contractor = JsonConvert.DeserializeObject<ContractorDto>(apiResponse);
-                    _logger.LogInformation($"[RRS] - [SendUpdateRequest] transfered response {contractor}");
+                }
+            }
+            return contractor;
+        }
+
+        public async Task<ContractorDto> SendDeleteRequest(Guid id)
+        {
+            ContractorDto contractor = new ContractorDto();
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.DeleteAsync(ApiData.ApiAddress + "/contractors-module/Contractors/" + id))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
                 }
             }
             return contractor;

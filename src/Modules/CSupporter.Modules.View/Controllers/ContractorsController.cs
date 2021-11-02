@@ -69,9 +69,11 @@ namespace CSupporter.Modules.View.Controllers
             return View(contractorDto);
         }
 
-        public async Task<IActionResult> ContractorDelete()
+        public async Task<IActionResult> ContractorDelete(Guid contractorId)
         {
-            return View();
+            var response = await _requestSenderService.SendDeleteRequest(contractorId);
+
+            return RedirectToAction(nameof(ContractorsIndex));
         }
     }
 }

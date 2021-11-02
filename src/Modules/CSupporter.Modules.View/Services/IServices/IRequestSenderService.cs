@@ -11,5 +11,6 @@ namespace CSupporter.Modules.View.Services.IServices
         Task<ContractorDto> SendGetRequest(Guid id);
         Task<ContractorDto> SendPostRequest(ContractorDto contractorDto);
         Task<ContractorDto> SendUpdateRequest(ContractorDto contractorDto);
+        Task<ContractorDto> SendDeleteRequest(Guid id);
     }
 }
