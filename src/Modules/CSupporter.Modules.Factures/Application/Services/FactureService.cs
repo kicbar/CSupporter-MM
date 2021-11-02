@@ -9,5 +9,11 @@ namespace CSupporter.Modules.Factures.Application.Services
 {
     public class FactureService : IFactureService
     {
+        private readonly IFactureRepository _factureRepository;
+
+        public FactureService(IFactureRepository factureRepository)
+        {
+            _factureRepository = factureRepository;
+        }
     }
 }
