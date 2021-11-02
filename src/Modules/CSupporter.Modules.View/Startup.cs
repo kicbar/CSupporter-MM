@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 
 namespace CSupporter.Modules.View
 {
@@ -23,10 +22,6 @@ namespace CSupporter.Modules.View
             services.AddHttpClient<IRequestSenderService, RequestSenderService>();
             services.AddScoped<IRequestSenderService, RequestSenderService>();
             services.AddControllersWithViews();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CSupporter.Core", Version = "v1" });
-            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
