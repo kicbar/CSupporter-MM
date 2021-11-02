@@ -1,5 +1,4 @@
-﻿using CSupporter.Shared.Infrastructure.Data;
-using CSupporter.Shared.Infrastructure.Middleware;
+﻿using CSupporter.Shared.Infrastructure.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
@@ -13,7 +12,7 @@ namespace CSupporter.Shared.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddControllers();
-
+            services.AddScoped<LimitRequestsMiddleware>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CSupporter.Core", Version = "v1" });
@@ -29,6 +28,7 @@ namespace CSupporter.Shared.Infrastructure
 
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseMiddleware<LimitRequestsMiddleware>();
             app.UseMiddleware<LoggingRequestsMiddleware>();
             app.UseAuthorization();
 
