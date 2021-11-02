@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSupporter.Modules.Factures.Application.Services.IServices
+namespace CSupporter.Modules.Factures.Domain.Interfaces
 {
-    class IFactureServices
+    public interface IFactureService
     {
     }
 }

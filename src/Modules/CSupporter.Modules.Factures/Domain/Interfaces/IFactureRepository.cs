@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Factures.Domain.Interfaces
 {
-    class IFactureRepository
+    public interface IFactureRepository
     {
     }
 }
