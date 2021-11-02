@@ -20,9 +20,7 @@ namespace CSupporter.Modules.View
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddHttpClient<IContractorService, ContractorService>();
             services.AddHttpClient<IRequestSenderService, RequestSenderService>();
-            services.AddScoped<IContractorService, ContractorService>();
             services.AddScoped<IRequestSenderService, RequestSenderService>();
             services.AddControllersWithViews();
             services.AddSwaggerGen(c =>
