@@ -1,4 +1,5 @@
 ﻿using CSupporter.Shared.Infrastructure.Data;
+using CSupporter.Shared.Infrastructure.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
@@ -28,6 +29,7 @@ namespace CSupporter.Shared.Infrastructure
 
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseMiddleware<LoggingRequestsMiddleware>();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
