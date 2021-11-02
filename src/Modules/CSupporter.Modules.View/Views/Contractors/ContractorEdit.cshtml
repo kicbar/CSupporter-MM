@@ -1,6 +1,70 @@
-﻿@{
+﻿@model CSupporter.Modules.Contractors.DTO.ContractorDto
+@{
     ViewData["Title"] = "Edit Contractor";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to edit contratcor</p>
+
+
+<form asp-action="ContractorEdit">
+    <input asp-for="Id" hidden />
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-primary">Edit Contractor</h1>
+
+        <hr />
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-2">
+                <label asp-for="FirstName" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="LastName" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="CompanyName" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <textarea asp-for="CompanyName" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="CompanyName" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="NIP" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <textarea asp-for="NIP" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="NIP" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Address" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="col-5 offset-2">
+
+                <a asp-action="ContractorsIndex" class="btn-primary btn form-control ">Back to List</a>
+            </div>
+            <div class="col-5">
+                <input type="submit" value="Update" class="btn btn-success form-control" />
+
+            </div>
+
+        </div>
+
+        <div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

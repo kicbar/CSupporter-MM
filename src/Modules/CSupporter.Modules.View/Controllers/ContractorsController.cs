@@ -1,6 +1,7 @@
 ﻿using CSupporter.Modules.Contractors.DTO;
 using CSupporter.Modules.View.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -18,8 +19,8 @@ namespace CSupporter.Modules.View.Controllers
         public async Task<IActionResult> ContractorsIndex()
         {
             List<ContractorDto> contractorsDto = new List<ContractorDto>();
-            var response = await _requestSenderService.SendGetAllRequest();
-            return View(response);
+            contractorsDto = await _requestSenderService.SendGetAllRequest();
+            return View(contractorsDto);
         }
 
 
@@ -27,12 +28,6 @@ namespace CSupporter.Modules.View.Controllers
         {
             return View();
         }
-        /*        [HttpPost]
-                public async Task<IActionResult> ContractorCreate(ContractorDto contractorDto)
-                {
-                    var response = await _requestSenderService.SendPostRequest(contractorDto);
-                    return View(response);
-                }*/
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -49,10 +44,29 @@ namespace CSupporter.Modules.View.Controllers
             return View(contractorDto);
         }
 
-
-        public async Task<IActionResult> ContractorEdit()
+        public async Task<IActionResult> ContractorEdit(Guid contractorId)
         {
-            return View();
+            ContractorDto contractorDto = new ContractorDto();
+            contractorDto = await _requestSenderService.SendGetRequest(contractorId);
+            if (contractorDto != null)
+                return View(contractorDto);
+
+            return NotFound();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ContractorEdit(ContractorDto contractorDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _requestSenderService.SendUpdateRequest(contractorDto);
+                if (response != null)
+                {
+                    return RedirectToAction(nameof(ContractorsIndex));
+                }
+            }
+            return View(contractorDto);
         }
 
         public async Task<IActionResult> ContractorDelete()
