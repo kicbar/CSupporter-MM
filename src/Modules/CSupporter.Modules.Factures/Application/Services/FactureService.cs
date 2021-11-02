@@ -1,8 +1,7 @@
-﻿using CSupporter.Modules.Factures.Domain.Interfaces;
+﻿using CSupporter.Modules.Factures.Domain.Entities;
+using CSupporter.Modules.Factures.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Factures.Application.Services
@@ -14,6 +13,31 @@ namespace CSupporter.Modules.Factures.Application.Services
         public FactureService(IFactureRepository factureRepository)
         {
             _factureRepository = factureRepository;
+        }
+
+        public Task AddAsync(Facture facture)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IReadOnlyList<Facture>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Facture> GetAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(Facture facture)
+        {
+            throw new NotImplementedException();
         }
     }
 }

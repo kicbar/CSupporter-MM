@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Factures.Domain.Entities
 {
-    class Facture
+    public class Facture
     {
+        public Guid Id { get; set; }
+        public string FactureNo { get; set; }
+        public DateTime FactureDate { get; set; }
+        public List<Position> Positions { get; set; }
+        public decimal ValueBrutto { get; set; }
+        public decimal ValueNetto { get; set; }
+        public string ContractorId { get; set; }
     }
 }
