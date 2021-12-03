@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSupporter.Modules.Factures.Application.Controllers
+namespace CSupporter.Modules.Factures.Controllers
 {
     [ApiController]
     [Route("api/facture/{factureId}/position")]
@@ -14,6 +14,12 @@ namespace CSupporter.Modules.Factures.Application.Controllers
         public PositionController()
         {
 
+        }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok("Facture Position Works!");
         }
     }
 }
