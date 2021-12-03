@@ -6,6 +6,7 @@ namespace CSupporter.Shared.Abstractions.IMessages
 {
     public interface IRequestSender : IDisposable
     {
-        Task<string> SendAsync<T>(APIRequest apiRequest);
+        APIResponse responseModel { get; set; }
+        Task<T> SendAsync<T>(APIRequest apiRequest);
     }
 }
