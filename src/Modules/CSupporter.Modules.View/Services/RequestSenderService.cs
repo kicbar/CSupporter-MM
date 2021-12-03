@@ -22,71 +22,61 @@ namespace CSupporter.Modules.View.Services
 
         public async Task<List<ContractorDto>> SendGetAllRequest()
         {
-            List<ContractorDto> contractorList = new List<ContractorDto>();
+            List<ContractorDto> contractorList = new ();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync(ApiData.ApiAddress + "/contractors-module/Contractors"))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    contractorList = JsonConvert.DeserializeObject<List<ContractorDto>>(apiResponse);
-                }
+                using var response = await httpClient.GetAsync(ApiData.ApiAddress + "/contractors-module/Contractors");
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                contractorList = JsonConvert.DeserializeObject<List<ContractorDto>>(apiResponse);
             }
             return contractorList;
         }
 
         public async Task<ContractorDto> SendGetRequest(Guid id)
         {
-            ContractorDto contractor = new ContractorDto();
+            ContractorDto contractor = new ();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.GetAsync(ApiData.ApiAddress + "/contractors-module/Contractors/" + id))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    contractor = JsonConvert.DeserializeObject<ContractorDto>(apiResponse);
-                }
+                using var response = await httpClient.GetAsync(ApiData.ApiAddress + "/contractors-module/Contractors/" + id);
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                contractor = JsonConvert.DeserializeObject<ContractorDto>(apiResponse);
             }
             return contractor;
         }
 
         public async Task<ContractorDto> SendPostRequest(ContractorDto contractorDto)
         {
-            ContractorDto contractor = new ContractorDto();
+            ContractorDto contractor = new ();
             var content = new StringContent(JsonConvert.SerializeObject(contractorDto), Encoding.UTF8, "application/json");
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.PostAsync(ApiData.ApiAddress + "/contractors-module/Contractors", content))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    contractor = JsonConvert.DeserializeObject<ContractorDto>(apiResponse);
-                }
+                using var response = await httpClient.PostAsync(ApiData.ApiAddress + "/contractors-module/Contractors", content);
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                contractor = JsonConvert.DeserializeObject<ContractorDto>(apiResponse);
             }
             return contractor;
         }
 
         public async Task<ContractorDto> SendUpdateRequest(ContractorDto contractorDto)
         {
-            ContractorDto contractor = new ContractorDto();
+            ContractorDto contractor = new ();
             var content = new StringContent(JsonConvert.SerializeObject(contractorDto), Encoding.UTF8, "application/json");
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.PutAsync(ApiData.ApiAddress + "/contractors-module/Contractors/" + contractorDto.Id, content))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    contractor = JsonConvert.DeserializeObject<ContractorDto>(apiResponse);
-                }
+                using var response = await httpClient.PutAsync(ApiData.ApiAddress + "/contractors-module/Contractors/" + contractorDto.Id, content);
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                contractor = JsonConvert.DeserializeObject<ContractorDto>(apiResponse);
             }
             return contractor;
         }
 
         public async Task<ContractorDto> SendDeleteRequest(Guid id)
         {
-            ContractorDto contractor = new ContractorDto();
+            ContractorDto contractor = new ();
             using (var httpClient = new HttpClient())
             {
-                using (var response = await httpClient.DeleteAsync(ApiData.ApiAddress + "/contractors-module/Contractors/" + id))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                }
+                using var response = await httpClient.DeleteAsync(ApiData.ApiAddress + "/contractors-module/Contractors/" + id);
+                string apiResponse = await response.Content.ReadAsStringAsync();
             }
             return contractor;
         }

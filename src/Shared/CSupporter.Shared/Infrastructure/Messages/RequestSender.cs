@@ -11,12 +11,12 @@ namespace CSupporter.Shared.Infrastructure.Messages
 {
     public class RequestSender : IRequestSender
     {
-        public APIResponse responseModel { get; set; }
+        public APIResponse ResponseModel { get; set; }
         public IHttpClientFactory httpClient;
 
         public RequestSender(IHttpClientFactory httpClient)
         {
-            this.responseModel = new APIResponse();
+            this.ResponseModel = new APIResponse();
             this.httpClient = httpClient;
         }
 
@@ -25,7 +25,7 @@ namespace CSupporter.Shared.Infrastructure.Messages
             try
             {
                 var client = httpClient.CreateClient("CSupporterMM");
-                HttpRequestMessage message = new HttpRequestMessage();
+                HttpRequestMessage message = new ();
                 message.Headers.Add("Accept", "application/json");
                 message.RequestUri = new Uri(apiRequest.Url);
                 client.DefaultRequestHeaders.Clear();
@@ -46,6 +46,8 @@ namespace CSupporter.Shared.Infrastructure.Messages
                         break;
                     case StaticDetails.ApiType.DELETE:
                         message.Method = HttpMethod.Delete;
+                        break;
+                    case StaticDetails.ApiType.GET:
                         break;
                     default:
                         message.Method = HttpMethod.Get;
