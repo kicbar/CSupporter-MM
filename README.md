@@ -1,7 +1,7 @@
 ## CSupporter-Modular-Monolith
 
 
-<h3>Web app prepare as modular monolith architecture. The application is used to support enterprises.</h3>
+<h3>Web app prepare as modular monolith architecture.</br> The application is used to support enterprises.</h3>
 <i>Modular monolith architecture in project:</i></br>
 <p align="center">
    <img src="https://github.com/kicbar/CSupporter-Modular-Monolith/blob/master/src/Modules/CSupporter.Modules.View/wwwroot/imgs/modular_monolith_architecture.png" alt=""/>
