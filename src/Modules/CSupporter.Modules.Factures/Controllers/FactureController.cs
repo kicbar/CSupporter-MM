@@ -14,16 +14,16 @@ namespace CSupporter.Modules.Factures.Controllers
     [Route("[controller]")]
     public class FactureController : ControllerBase
     {
-        private readonly Shared.Abstractions.IMessages.IServices.IContractorAPIService _contractorAPIService;
+        private readonly IContractorAPIService _contractorAPIService;
         private readonly IFactureService _factureService;
 
-        public FactureController(IFactureService factureService, Shared.Abstractions.IMessages.IServices.IContractorAPIService contractorAPIService)
+        public FactureController(IFactureService factureService, IContractorAPIService contractorAPIService)
         {
             _contractorAPIService = contractorAPIService;
             _factureService = factureService;
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public async Task<ActionResult<string>> Get(Guid id)
         {
             var response = await _contractorAPIService.GetContractorByIdAsync<APIResponse>(id);

@@ -23,7 +23,7 @@ namespace CSupporter.Shared.Infrastructure.Messages.Services
             return await this.SendAsync<T>(new APIRequest()
             {
                 ApiType = StaticDetails.ApiType.GET,
-                Url = StaticDetails.CSupporterAPI + "contractors-module/Contractors/" + id
+                Url = StaticDetails.CSupporterAPI + "api/contractor/" + id
             });
         }
 
@@ -32,7 +32,7 @@ namespace CSupporter.Shared.Infrastructure.Messages.Services
             return await this.SendAsync<T>(new APIRequest()
             {
                 ApiType = StaticDetails.ApiType.GET,
-                Url = StaticDetails.CSupporterAPI + "contractors-module/Contractors/"
+                Url = StaticDetails.CSupporterAPI + "api/contractor"
             });
         }
     }
