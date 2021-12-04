@@ -8,19 +8,21 @@ using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Contractors.Controllers
 {
-    public class ContractorsController : BaseController
+    [ApiController]
+    [Route("api/contractor")]
+    public class ContractorsAPIController : ControllerBase
     {
         protected APIResponse _response;
         private readonly IContractorService _contractorService;
 
-        public ContractorsController(IContractorService contractorService)
+        public ContractorsAPIController(IContractorService contractorService)
         {
             this._response = new APIResponse();
             _contractorService = contractorService;
         }
 
         [HttpGet("{id}")]
-        public async Task<object> GetContractor(Guid id)
+        public async Task<object> GetAPIContractor(Guid id)
         {
             try
             {
@@ -37,7 +39,7 @@ namespace CSupporter.Modules.Contractors.Controllers
 
 
         [HttpGet]
-        public async Task<object> GetAllContractors()
+        public async Task<object> GetAPIAllContractors()
         {
             try
             {
@@ -50,28 +52,6 @@ namespace CSupporter.Modules.Contractors.Controllers
                 _response.ErrorMessages = new List<string>() { ex.ToString() };
             }
             return _response;
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> PostContractors(ContractorDto dto)
-        {
-            await _contractorService.AddAsync(dto);
-            return CreatedAtAction(nameof(GetContractor), routeValues: new {id = dto.Id}, value: null);
-        }
-
-        [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateContractors(Guid id, ContractorDto dto)
-        {
-            dto.Id = id;
-            await _contractorService.UpdateAsync(dto);
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteContractors(Guid id)
-        {
-            await _contractorService.DeleteAsync(id);
-            return NoContent();
         }
     }
 }
