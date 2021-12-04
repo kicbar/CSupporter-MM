@@ -19,7 +19,7 @@ namespace CSupporter.Modules.Factures.Application.Services
             return await this.SendAsync<T>(new APIRequest()
             {
                 ApiType = StaticDetails.ApiType.GET,
-                Url = StaticDetails.CSupporterAPI + "/contractors-module/Contractors/" + contractorId
+                Url = StaticDetails.CSupporterAPI + "/api/contractor/" + contractorId
             });
         }
     }

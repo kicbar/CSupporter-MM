@@ -20,37 +20,12 @@ namespace CSupporter.Modules.Contractors.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<object> GetContractor(Guid id)
-        {
-            try
-            {
-                ContractorDetailsDto contractorDetailsDto = await _contractorService.GetAsync(id);
-                _response.Result = contractorDetailsDto;
-            }
-            catch (Exception ex)
-            {
-                _response.IsSuccess = false;
-                _response.ErrorMessages = new List<string>() { ex.ToString() };
-            }
-            return _response;
-        }
-
+        public async Task<ActionResult<ContractorDetailsDto>> GetContractor(Guid id)
+            => OkOrNotFound(await _contractorService.GetAsync(id));
 
         [HttpGet]
-        public async Task<object> GetAllContractors()
-        {
-            try
-            {
-                IEnumerable<ContractorDto> contractorsDetailsDto = await _contractorService.GetAllAsync();
-                _response.Result = contractorsDetailsDto;
-            }
-            catch (Exception ex)
-            {
-                _response.IsSuccess = false;
-                _response.ErrorMessages = new List<string>() { ex.ToString() };
-            }
-            return _response;
-        }
+        public async Task<ActionResult<IReadOnlyList<ContractorDto>>> GetAllContractors()
+            => Ok(await _contractorService.GetAllAsync());
 
         [HttpPost]
         public async Task<ActionResult> PostContractors(ContractorDto dto)
