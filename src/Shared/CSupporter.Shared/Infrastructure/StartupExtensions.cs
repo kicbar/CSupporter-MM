@@ -1,4 +1,6 @@
-﻿using CSupporter.Shared.Infrastructure.Middleware;
+﻿using CSupporter.Shared.Abstractions.IMessages.IServices;
+using CSupporter.Shared.Infrastructure.Messages.Services;
+using CSupporter.Shared.Infrastructure.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
@@ -11,6 +13,10 @@ namespace CSupporter.Shared.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
+            services.AddHttpClient<IContractorAPIService, ContractorAPIService>();
+            services.AddScoped<IContractorAPIService, ContractorAPIService>();
+
+
             services.AddControllers();
             services.AddScoped<LimitRequestsMiddleware>();
             services.AddSwaggerGen(c =>

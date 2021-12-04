@@ -12,6 +12,9 @@ namespace CSupporter.Modules.Factures
     {
         public static IServiceCollection AddFacturesConfig(this IServiceCollection services)
         {
+            /*services.AddHttpClient<IContractorAPIService, ContractorAPIService>();
+            services.AddScoped<IContractorAPIService, ContractorAPIService>();*/
+
             services.AddTransient<IFactureRepository, FactureRepository>();
             services.AddScoped<IFactureService, FactureService>();
             services.AddDbContext<CSupporterDbContext>();

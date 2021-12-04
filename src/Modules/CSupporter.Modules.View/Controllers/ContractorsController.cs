@@ -18,8 +18,7 @@ namespace CSupporter.Modules.View.Controllers
 
         public async Task<IActionResult> ContractorsIndex()
         {
-            List<ContractorDto> contractorsDto = new List<ContractorDto>();
-            contractorsDto = await _requestSenderService.SendGetAllRequest();
+            List<ContractorDto> contractorsDto = await _requestSenderService.SendGetAllRequest();
             return View(contractorsDto);
         }
 
@@ -46,8 +45,7 @@ namespace CSupporter.Modules.View.Controllers
 
         public async Task<IActionResult> ContractorEdit(Guid contractorId)
         {
-            ContractorDto contractorDto = new ContractorDto();
-            contractorDto = await _requestSenderService.SendGetRequest(contractorId);
+            ContractorDto contractorDto = await _requestSenderService.SendGetRequest(contractorId);
             if (contractorDto != null)
                 return View(contractorDto);
 

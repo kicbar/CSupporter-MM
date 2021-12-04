@@ -2,10 +2,10 @@
 {
     public static class StaticDetails
     {
-        public static string ContractorAPI { get; set; }
-        public static string FactureAPI { get; set; }
-        public static string IncomeAPI { get; set; }
-        public static string ProductAPI { get; set; }
+        public static string CSupporterAPI 
+        {
+            get { return "https://localhost:44324/"; }
+        }
         public enum ApiType { GET, POST, PUT, DELETE }
     }
 }
