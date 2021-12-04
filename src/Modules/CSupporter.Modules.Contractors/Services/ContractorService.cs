@@ -46,7 +46,7 @@ namespace CSupporter.Modules.Contractors.Services
             return Map<ContractorDetailsDto>(contractor);
         }
 
-        public async Task<IReadOnlyList<ContractorDto>> GetAllAsync()
+        public async Task<List<ContractorDto>> GetAllAsync()
         {
             var contractors = await _contractorRepository.GetAllAsync();
 

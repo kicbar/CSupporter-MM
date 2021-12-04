@@ -64,7 +64,7 @@ namespace CSupporter.Shared.Infrastructure.Messages
                 var dto = new APIResponse
                 {
                     DisplayMessage = "Error",
-                    ErrorMessage = new List<string> { Convert.ToString(exc.Message) },
+                    ErrorMessages = new List<string> { Convert.ToString(exc.Message) },
                     IsSuccess = false,
                 };
 

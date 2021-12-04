@@ -9,7 +9,7 @@ namespace CSupporter.Modules.Contractors.Services.Abstractions
     {
         Task AddAsync(ContractorDto dto);
         Task<ContractorDetailsDto> GetAsync(Guid id);
-        Task<IReadOnlyList<ContractorDto>> GetAllAsync();
+        Task<List<ContractorDto>> GetAllAsync();
         Task UpdateAsync(ContractorDto dto);
         Task DeleteAsync(Guid id);
     }
