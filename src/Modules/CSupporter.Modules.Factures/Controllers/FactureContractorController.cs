@@ -22,10 +22,10 @@ namespace CSupporter.Modules.Factures.Controllers
             _factureService = factureService;
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<string>> Get(Guid id)
+        [HttpGet("{contractorId}")]
+        public async Task<ActionResult<string>> Get(string contractorId)
         {
-            var response = await _contractorAPIService.GetContractorByIdAsync<APIResponse>(id);
+            var response = await _contractorAPIService.GetContractorByIdAsync<APIResponse>(contractorId);
 
             ContractorDto contractorDto = new();
             if (response != null && response.IsSuccess)

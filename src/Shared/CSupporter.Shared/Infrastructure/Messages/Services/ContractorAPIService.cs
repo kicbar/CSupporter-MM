@@ -18,12 +18,12 @@ namespace CSupporter.Shared.Infrastructure.Messages.Services
             _clientFactory = clientFactory;
         }
 
-        public async Task<T> GetContractorByIdAsync<T>(Guid id)
+        public async Task<T> GetContractorByIdAsync<T>(string contractorId)
         {
             return await this.SendAsync<T>(new APIRequest()
             {
                 ApiType = StaticDetails.ApiType.GET,
-                Url = StaticDetails.CSupporterAPI + "api/contractor/" + id
+                Url = StaticDetails.CSupporterAPI + "api/contractor/" + contractorId
             });
         }
 

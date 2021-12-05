@@ -1,7 +1,9 @@
 ﻿using CSupporter.Modules.Factures.Domain.Interfaces;
+using CSupporter.Shared.Abstractions.IMessages.IServices;
 using CSupporter.Shared.Infrastructure.Models;
 using CSupporter.Shared.Infrastructure.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,11 +15,15 @@ namespace CSupporter.Modules.Factures.Controllers
     public class FactureAPIController : ControllerBase
     {
         protected APIResponse _response;
+        private readonly IContractorAPIService _contractorAPIService;
+        private readonly IPositionService _positionService;
         private readonly IFactureService _factureService;
-
-        public FactureAPIController(IFactureService factureService)
+        
+        public FactureAPIController(IFactureService factureService, IContractorAPIService contractorAPIService, IPositionService positionService)
         {
             this._response = new APIResponse();
+            _contractorAPIService = contractorAPIService;
+            _positionService = positionService;
             _factureService = factureService;
         }
 
@@ -104,6 +110,50 @@ namespace CSupporter.Modules.Factures.Controllers
                 _response.ErrorMessages = new List<string> { exc.ToString() };
             }
             return _response;
+        }
+
+        [HttpGet]
+        [Route("details/{factureId}")]
+        [ActionName("GetFactureDetails")]
+        public async Task<ActionResult<EntireFactureDto>> GetFactureDetails(int factureId)
+        {
+            EntireFactureDto entireFactureDto = new();
+            FactureDto factureDto = _factureService.GetFacture(factureId);
+            if (factureDto != null)
+            {
+                entireFactureDto.FactureId = factureDto.FactureId;
+                entireFactureDto.FactureNo = factureDto.FactureNo;
+                entireFactureDto.FactureType = factureDto.FactureType;
+                entireFactureDto.FactureDate = factureDto.FactureDate;
+                entireFactureDto.FactureValue = factureDto.Value;
+
+                var response = await _contractorAPIService.GetContractorByIdAsync<APIResponse>(factureDto.ContractorId);
+
+                ContractorDto contractorDto = new();
+                if (response != null && response.IsSuccess)
+                {
+                    contractorDto = JsonConvert.DeserializeObject<ContractorDto>(Convert.ToString(response.Result));
+                }
+
+                if (response != null)
+                {
+                    //ContractorDto contractorDtoModel = JsonConvert.DeserializeObject<ContractorDto>(Convert.ToString(contractorDto));
+                    entireFactureDto.ContractorFirstName = contractorDto.FirstName;
+                    entireFactureDto.ContractorLastName = contractorDto.LastName;
+                    entireFactureDto.ContractorCompanyName = contractorDto.CompanyName;
+                    entireFactureDto.ContractorAddress = contractorDto.Address;
+                    entireFactureDto.ContractorNIP = contractorDto.NIP;
+                }
+                else
+                    return NotFound();
+
+                List<PositionDto> positionDtos = _positionService.GetAllPositionsForFacture(factureId);
+                entireFactureDto.Positions = positionDtos;
+            }
+            else
+                return NotFound();
+
+            return entireFactureDto;
         }
     }
 }
