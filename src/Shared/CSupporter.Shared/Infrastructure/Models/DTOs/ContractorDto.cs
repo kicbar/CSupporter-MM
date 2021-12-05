@@ -1,8 +1,10 @@
-﻿namespace CSupporter.Shared.Infrastructure.Models.DTOs
+﻿using System;
+
+namespace CSupporter.Shared.Infrastructure.Models.DTOs
 {
     public class ContractorDto
     {
-        public int ContractorId { get; set; }
+        public Guid ContractorId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }

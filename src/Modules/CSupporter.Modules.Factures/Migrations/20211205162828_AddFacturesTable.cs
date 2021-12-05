@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CSupporter.Modules.Factures.Migrations
 {
-    public partial class AddFacturesToDb : Migration
+    public partial class AddFacturesTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,7 @@ namespace CSupporter.Modules.Factures.Migrations
                     FactureType = table.Column<string>(type: "nvarchar(7)", maxLength: 7, nullable: false),
                     FactureDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Value = table.Column<double>(type: "float", nullable: false),
-                    ContractorId = table.Column<int>(type: "int", nullable: false),
+                    ContractorId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InsertDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },

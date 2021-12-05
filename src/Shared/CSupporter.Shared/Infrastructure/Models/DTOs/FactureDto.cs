@@ -9,6 +9,6 @@ namespace CSupporter.Shared.Infrastructure.Models.DTOs
         public string FactureType { get; set; }
         public DateTime FactureDate { get; set; } = DateTime.Now;
         public double Value { get; set; }
-        public int ContractorId { get; set; }
+        public string ContractorId { get; set; }
     }
 }

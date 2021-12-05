@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CSupporter.Modules.Factures.Migrations
 {
     [DbContext(typeof(CSupporterDbContext))]
-    [Migration("20211205115338_AddFacturesToDb")]
-    partial class AddFacturesToDb
+    [Migration("20211205162828_AddFacturesTable")]
+    partial class AddFacturesTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,8 +28,9 @@ namespace CSupporter.Modules.Factures.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ContractorId")
-                        .HasColumnType("int");
+                    b.Property<string>("ContractorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FactureDate")
                         .HasColumnType("datetime2");

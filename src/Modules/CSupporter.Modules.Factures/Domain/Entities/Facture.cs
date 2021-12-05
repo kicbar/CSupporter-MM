@@ -18,7 +18,7 @@ namespace CSupporter.Modules.Factures.Domain.Entities
         [Range(1, 1000)]
         public double Value { get; set; }
         [Required]
-        public int ContractorId { get; set; }
+        public string ContractorId { get; set; }
         public DateTime InsertDate { get; set; } = DateTime.Now;
         public DateTime UpdateDate { get; set; } = DateTime.Now;
 
