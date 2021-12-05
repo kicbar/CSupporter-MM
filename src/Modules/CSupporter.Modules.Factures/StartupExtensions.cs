@@ -15,7 +15,9 @@ namespace CSupporter.Modules.Factures
         public static IServiceCollection AddFacturesConfig(this IServiceCollection services)
         {
             services.AddTransient<IFactureRepository, FactureRepository>();
+            services.AddTransient<IPositionRepository, PositionRepository>();
             services.AddScoped<IFactureService, FactureService>();
+            services.AddScoped<IPositionService, PositionService>();
             services.AddDbContext<CSupporterDbContext>();
 
             IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
