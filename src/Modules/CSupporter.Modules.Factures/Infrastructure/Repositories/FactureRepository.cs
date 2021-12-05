@@ -1,36 +1,47 @@
 ﻿using CSupporter.Modules.Factures.Domain.Entities;
 using CSupporter.Modules.Factures.Domain.Interfaces;
-using System;
+using CSupporter.Modules.Factures.Infrastructure.Data;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
 
 namespace CSupporter.Modules.Factures.Infrastructure.Repositories
 {
     public class FactureRepository : IFactureRepository
     {
-        public Task AddAsync(Facture facture)
+        private readonly CSupporterDbContext _csupporterDbContext;
+
+        public FactureRepository(CSupporterDbContext csupporterDbContext)
         {
-            throw new NotImplementedException();
+            _csupporterDbContext = csupporterDbContext;
+        }
+        public Facture GetFacture(int factureId)
+        {
+            return _csupporterDbContext.Factures.Where(f => f.FactureId == factureId).FirstOrDefault();
         }
 
-        public Task DeleteAsync(Facture facture)
+        public List<Facture> GetAllFactures()
         {
-            throw new NotImplementedException();
+            List<Facture> factures = _csupporterDbContext.Factures.ToList();
+            return factures;
         }
 
-        public Task<IReadOnlyList<Facture>> GetAllAsync()
+        public void AddFacture(Facture facture)
         {
-            throw new NotImplementedException();
+            _csupporterDbContext.Add(facture);
+            _csupporterDbContext.SaveChanges();
         }
 
-        public Task<Facture> GetAsync(Guid id)
+        public void UpdateFacture(Facture facture)
         {
-            throw new NotImplementedException();
+            _csupporterDbContext.Update(facture);
+            _csupporterDbContext.SaveChanges();
         }
 
-        public Task UpdateAsync(Facture facture)
+        public void DeleteFacture(Facture facture)
         {
-            throw new NotImplementedException();
+            _csupporterDbContext.Remove(facture);
+            _csupporterDbContext.SaveChanges();
         }
+
     }
 }
