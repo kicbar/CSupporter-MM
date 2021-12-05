@@ -5,6 +5,7 @@ using CSupporter.Shared.Infrastructure.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Factures.Controllers
@@ -13,27 +14,18 @@ namespace CSupporter.Modules.Factures.Controllers
     [Route("[controller]")]
     public class FactureController : ControllerBase
     {
-        private readonly IContractorAPIService _contractorAPIService;
         private readonly IFactureService _factureService;
 
-        public FactureController(IFactureService factureService, IContractorAPIService contractorAPIService)
+        public FactureController(IFactureService factureService)
         {
-            _contractorAPIService = contractorAPIService;
             _factureService = factureService;
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<string>> Get(Guid id)
+        [HttpGet]
+        [ActionName("GetAllFactures")]
+        public ActionResult<List<FactureDto>> GetAllFactures()
         {
-            var response = await _contractorAPIService.GetContractorByIdAsync<APIResponse>(id);
-
-            ContractorDto contractorDto = new();
-            if (response != null && response.IsSuccess)
-            {
-                contractorDto = JsonConvert.DeserializeObject<ContractorDto>(Convert.ToString(response.Result));
-            }
-
-            return Ok("Facture Works!");
+            return Ok(_factureService.GetAllFactures());
         }
     }
 }
