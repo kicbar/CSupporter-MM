@@ -1,12 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace CSupporter.Modules.Factures.Domain.Entities
 {
     public class Position
     {
+        [Key]
+        public int PositionId { get; set; }
+        [Required]
+        public string ProductName { get; set; }
+        [Range(1, 1000)]
+        [Required]
+        public int ProductAmount { get; set; } = 1;
+        [Required]
+        public double ProductPrice { get; set; }
+
+        public virtual Facture Facture { get; set; }
+        public int FactureId { get; set; }
     }
 }

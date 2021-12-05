@@ -1,9 +1,8 @@
-﻿using CSupporter.Modules.Factures.Application.DTOs;
-using CSupporter.Modules.Factures.Domain.Interfaces;
+﻿using CSupporter.Modules.Factures.Domain.Interfaces;
 using CSupporter.Shared.Abstractions.IMessages.IServices;
 using CSupporter.Shared.Infrastructure.Models;
+using CSupporter.Shared.Infrastructure.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;

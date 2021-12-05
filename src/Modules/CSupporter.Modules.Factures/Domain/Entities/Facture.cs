@@ -1,16 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CSupporter.Modules.Factures.Domain.Entities
 {
     public class Facture
     {
-        public Guid Id { get; set; }
+        [Key]
+        public int FactureId { get; set; }
+        [Required]
         public string FactureNo { get; set; }
-        public DateTime FactureDate { get; set; }
-        public List<Position> Positions { get; set; }
-        public decimal ValueBrutto { get; set; }
-        public decimal ValueNetto { get; set; }
-        public string ContractorId { get; set; }
+        [Required]
+        [StringLength(7)]
+        public string FactureType { get; set; } = "OUTCOME";
+        [Required]
+        public DateTime FactureDate { get; set; } = DateTime.Now;
+        [Range(1, 1000)]
+        public double Value { get; set; }
+        [Required]
+        public int ContractorId { get; set; }
+        public DateTime InsertDate { get; set; } = DateTime.Now;
+        public DateTime UpdateDate { get; set; } = DateTime.Now;
+
+        public virtual List<Position> Positions { get; set; }
     }
 }
