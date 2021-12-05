@@ -1,11 +1,6 @@
 ﻿using CSupporter.Modules.Factures.Domain.Entities;
 using CSupporter.Shared.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Factures.Infrastructure.Data
 {
@@ -20,5 +15,10 @@ namespace CSupporter.Modules.Factures.Infrastructure.Data
 
         public DbSet<Facture> Factures { get; set; }
         public DbSet<Position> Positions { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(_connectionString);
+        }
     }
 }
