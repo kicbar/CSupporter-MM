@@ -41,15 +41,15 @@ namespace CSupporter.Modules.Factures.Infrastructure.Repositories
             return facture;
         }
 
-        public bool DeleteFacture(Facture facture)
+        public bool DeleteFacture(int factureId)
         {
             try
             {
-                Facture factureExist = _csupporterDbContext.Factures.Where(f => f.FactureId == facture.FactureId).FirstOrDefault();
+                Facture factureExist = _csupporterDbContext.Factures.Where(f => f.FactureId == factureId).FirstOrDefault();
                 if (factureExist == null)
                     return false;
 
-                _csupporterDbContext.Remove(facture);
+                _csupporterDbContext.Remove(factureExist);
                 _csupporterDbContext.SaveChanges();
                 return true;
             }

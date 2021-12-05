@@ -9,6 +9,6 @@ namespace CSupporter.Modules.Factures.Domain.Interfaces
         List<Facture> GetAllFactures();
         Facture AddFacture(Facture facture);
         Facture UpdateFacture(Facture facture);
-        bool DeleteFacture(Facture facture);
+        bool DeleteFacture(int factureId);
     }
 }

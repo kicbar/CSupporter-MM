@@ -1,5 +1,6 @@
 ﻿using CSupporter.Modules.Factures.Domain.Entities;
 using CSupporter.Modules.Factures.Domain.Interfaces;
+using CSupporter.Shared.Infrastructure.Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,27 +16,27 @@ namespace CSupporter.Modules.Factures.Application.Services
             _factureRepository = factureRepository;
         }
 
-        public Task AddAsync(Facture facture)
+        public FactureDto AddFacture(FactureDto factureDto)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteAsync(Guid id)
+        public bool DeleteAsync(int factureId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IReadOnlyList<Facture>> GetAllAsync()
+        public List<FactureDto> GetAllFactures()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Facture> GetAsync(Guid id)
+        public FactureDto GetFacture(int factureId)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(Facture facture)
+        public FactureDto UpdateAsync(FactureDto facture)
         {
             throw new NotImplementedException();
         }
