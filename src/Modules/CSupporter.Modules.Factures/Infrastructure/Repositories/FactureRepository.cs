@@ -25,23 +25,38 @@ namespace CSupporter.Modules.Factures.Infrastructure.Repositories
             return factures;
         }
 
-        public void AddFacture(Facture facture)
+        public Facture AddFacture(Facture facture)
         {
             _csupporterDbContext.Add(facture);
             _csupporterDbContext.SaveChanges();
+
+            return facture;
         }
 
-        public void UpdateFacture(Facture facture)
+        public Facture UpdateFacture(Facture facture)
         {
             _csupporterDbContext.Update(facture);
             _csupporterDbContext.SaveChanges();
+
+            return facture;
         }
 
-        public void DeleteFacture(Facture facture)
+        public bool DeleteFacture(Facture facture)
         {
-            _csupporterDbContext.Remove(facture);
-            _csupporterDbContext.SaveChanges();
-        }
+            try
+            {
+                Facture factureExist = _csupporterDbContext.Factures.Where(f => f.FactureId == facture.FactureId).FirstOrDefault();
+                if (factureExist == null)
+                    return false;
 
+                _csupporterDbContext.Remove(facture);
+                _csupporterDbContext.SaveChanges();
+                return true;
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
+        }
     }
 }

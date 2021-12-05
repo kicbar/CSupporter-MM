@@ -7,8 +7,8 @@ namespace CSupporter.Modules.Factures.Domain.Interfaces
     {
         Facture GetFacture(int factureId);
         List<Facture> GetAllFactures();
-        void AddFacture(Facture facture);
-        void UpdateFacture(Facture facture);
-        void DeleteFacture(Facture facture);
+        Facture AddFacture(Facture facture);
+        Facture UpdateFacture(Facture facture);
+        bool DeleteFacture(Facture facture);
     }
 }
