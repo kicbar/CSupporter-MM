@@ -41,9 +41,9 @@ namespace CSupporter.Modules.Products.Application.Services
             return _mapper.Map<ProductDto>(product);
         }
 
-        public bool DeleteProduct(ProductDto productDto)
+        public bool DeleteProduct(int productId)
         {
-            return _productRepository.DeleteProduct(productDto.ProductId);
+            return _productRepository.DeleteProduct(productId);
         }
     }
 }
