@@ -9,6 +9,6 @@ namespace CSupporter.Modules.Products.Domain.Interfaces
         ProductDto GetProductById(int productId);
         ProductDto AddProduct(ProductDto productDto);
         ProductDto UpdateProduct(ProductDto productDto);
-        ProductDto DeleteProduct(ProductDto productDto);
+        bool DeleteProduct(ProductDto productDto);
     }
 }
