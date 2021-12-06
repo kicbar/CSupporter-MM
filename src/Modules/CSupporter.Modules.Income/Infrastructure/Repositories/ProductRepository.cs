@@ -1,4 +1,5 @@
-﻿using CSupporter.Modules.Products.Domain.Interfaces;
+﻿using CSupporter.Modules.Products.Domain.Entities;
+using CSupporter.Modules.Products.Domain.Interfaces;
 using CSupporter.Modules.Products.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,31 @@ namespace CSupporter.Modules.Products.Infrastructure.Repositories
         public ProductRepository(CSupporterDbContext csupporterDbContext)
         {
             _csupporterDbContext = csupporterDbContext;
+        }
+
+        public Product AddProduct(Product productDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product DeleteProduct(Product productDto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Product> GetAllProducts()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product GetProductById(int productId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product UpdateProduct(Product productDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

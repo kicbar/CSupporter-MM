@@ -1,12 +1,14 @@
-﻿using System;
+﻿using CSupporter.Modules.Products.Domain.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Products.Domain.Interfaces
 {
     public interface IProductRepository
     {
+        List<Product> GetAllProducts();
+        Product GetProductById(int productId);
+        Product AddProduct(Product productDto);
+        Product UpdateProduct(Product productDto);
+        Product DeleteProduct(Product productDto);
     }
 }
