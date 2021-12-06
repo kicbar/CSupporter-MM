@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CSupporter.Modules.Products.Domain.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,13 @@ namespace CSupporter.Modules.Products.Controllers
     [Route("api/product")]
     public class ProductAPIController : ControllerBase
     {
+        private readonly IProductService _productService;
+
+        public ProductAPIController(IProductService productService)
+        {
+            _productService = productService;
+        }
+
         [HttpGet]
         public IActionResult Get()
         {
