@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CSupporter.Modules.Factures.Migrations
 {
-    public partial class AddFacturesTable : Migration
+    public partial class RebuildFacturesDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,9 +32,9 @@ namespace CSupporter.Modules.Factures.Migrations
                 {
                     PositionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PositionNo = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
                     ProductAmount = table.Column<int>(type: "int", nullable: false),
-                    ProductPrice = table.Column<double>(type: "float", nullable: false),
                     FactureId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

@@ -4,16 +4,14 @@ using CSupporter.Modules.Factures.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CSupporter.Modules.Factures.Migrations
 {
     [DbContext(typeof(CSupporterDbContext))]
-    [Migration("20211205162828_AddFacturesTable")]
-    partial class AddFacturesTable
+    partial class CSupporterDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,15 +66,14 @@ namespace CSupporter.Modules.Factures.Migrations
                     b.Property<int>("FactureId")
                         .HasColumnType("int");
 
+                    b.Property<int>("PositionNo")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductAmount")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("ProductPrice")
-                        .HasColumnType("float");
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
                     b.HasKey("PositionId");
 

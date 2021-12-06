@@ -18,14 +18,12 @@ namespace CSupporter.Modules.Factures.Infrastructure.Repositories
 
         public List<Position> GetAllPositionsForFacture(int factureId)
         {
-            CalculateFactureValue(factureId);
             return _csupporterDbContext.Positions.Where(position => position.FactureId == factureId).ToList();
         }
 
         public Position AddPositionToFacture(Position position)
         {
             _csupporterDbContext.Add(position);
-            CalculateFactureValue(position.FactureId);
             _csupporterDbContext.SaveChanges();
             return position;
         }
@@ -39,7 +37,6 @@ namespace CSupporter.Modules.Factures.Infrastructure.Repositories
                 if (position != null)
                 {
                     _csupporterDbContext.Remove(position);
-                    CalculateFactureValue(position.FactureId);
                     _csupporterDbContext.SaveChanges();
                 }
 
@@ -49,21 +46,6 @@ namespace CSupporter.Modules.Factures.Infrastructure.Repositories
             {
                 return false;
             }
-        }
-
-        private void CalculateFactureValue(int factureId)
-        {
-            double factureValue = 0;
-            List<Position> positions = _csupporterDbContext.Positions.Where(position => position.FactureId == factureId).ToList();
-
-            foreach (Position position in positions)
-            {
-                factureValue += position.ProductPrice * position.ProductAmount;
-            }
-
-            Facture facture = _csupporterDbContext.Factures.Where(facture => facture.FactureId == factureId).FirstOrDefault();
-            facture.Value = factureValue;
-            _csupporterDbContext.SaveChanges();
         }
     }
 }
