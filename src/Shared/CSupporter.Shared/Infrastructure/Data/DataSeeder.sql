@@ -1,3 +1,4 @@
+--procedure for calculate facture value
 
 --factures
 INSERT INTO [dbo].[Factures] ([FactureNo], [FactureType], [ContractorId], [FactureDate], [UpdateDate], [InsertDate], [Value])
@@ -20,3 +21,11 @@ INSERT INTO [dbo].[Positions] ([ProductName], [ProductAmount], [ProductPrice], [
 	 VALUES ('IPhone 6S', 1, 999.99, 3)
 INSERT INTO [dbo].[Positions] ([ProductName], [ProductAmount], [ProductPrice], [FactureId])
 	 VALUES ('Laptop Lenovo', 1, 3100, 3)
+
+--products
+INSERT INTO [dbo].[Products] ([Name], [Category], [Price], [Details])
+	 VALUES ('Laptop Lenovo', 'Electronics', 3100, 'Intel Core i5, 240SSD, 16GB RAM')
+INSERT INTO [dbo].[Products] ([Name], [Category], [Price], [Details])
+	 VALUES ('IPhone 6S', 'Electronics', 1200, 'Apple A9 1.85GHz dual-core, 48Mpx, 4/64GB')
+INSERT INTO [dbo].[Products] ([Name], [Category], [Price], [Details])
+	 VALUES ('Headphone Huawei AM61', 'Electronics', 119.99, 'Bluetooth, microUSB, microphone')
