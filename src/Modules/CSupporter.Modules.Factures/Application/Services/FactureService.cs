@@ -26,7 +26,17 @@ namespace CSupporter.Modules.Factures.Application.Services
         public FactureDto GetFacture(int factureId)
         {
             Facture facture = _factureRepository.GetFacture(factureId);
-            return _mapper.Map<FactureDto>(facture);
+            //FactureDto factureDto = _mapper.Map<FactureDto>(facture);
+            FactureDto factureDto = new();
+
+            factureDto.FactureId = facture.FactureId;
+            factureDto.FactureNo = facture.FactureNo;
+            factureDto.FactureType = facture.FactureType;
+            factureDto.FactureDate = facture.FactureDate;
+            factureDto.Value = facture.Value;
+            factureDto.ContractorId = facture.ContractorId;
+
+            return factureDto;
         }
 
         public FactureDto AddFacture(FactureDto factureDto)

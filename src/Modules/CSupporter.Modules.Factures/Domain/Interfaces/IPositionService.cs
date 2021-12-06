@@ -1,11 +1,12 @@
 ﻿using CSupporter.Shared.Infrastructure.Models.DTOs;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Factures.Domain.Interfaces
 {
     public interface IPositionService
     {
-        List<PositionDto> GetAllPositionsForFacture(int factureId);
+        Task<List<PositionDto>> GetAllPositionsForFactureAsync(int factureId);
         PositionDto AddPositionToFacture(PositionDto positionDto, int factureId);
         bool RemovePositionFromFacture(int positionId);
     }

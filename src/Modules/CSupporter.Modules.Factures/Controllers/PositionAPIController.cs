@@ -28,7 +28,7 @@ namespace CSupporter.Modules.Factures.Controllers
         {
             try
             {
-                List<PositionDto> positionsDto = _positionService.GetAllPositionsForFacture(factureId);
+                List<PositionDto> positionsDto = await _positionService.GetAllPositionsForFactureAsync(factureId);
                 _response.Result = positionsDto;
             }
             catch (Exception ex)

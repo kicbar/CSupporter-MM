@@ -119,6 +119,7 @@ namespace CSupporter.Modules.Factures.Controllers
         {
             EntireFactureDto entireFactureDto = new();
             FactureDto factureDto = _factureService.GetFacture(factureId);
+            factureDto.ToString();
             if (factureDto != null)
             {
                 entireFactureDto.FactureId = factureDto.FactureId;
@@ -147,7 +148,7 @@ namespace CSupporter.Modules.Factures.Controllers
                 else
                     return NotFound();
 
-                List<PositionDto> positionDtos = _positionService.GetAllPositionsForFacture(factureId);
+                List<PositionDto> positionDtos = await _positionService.GetAllPositionsForFactureAsync(factureId);
                 entireFactureDto.Positions = positionDtos;
             }
             else
