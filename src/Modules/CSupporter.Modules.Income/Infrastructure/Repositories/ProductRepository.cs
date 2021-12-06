@@ -1,11 +1,8 @@
 ﻿using CSupporter.Modules.Products.Domain.Entities;
 using CSupporter.Modules.Products.Domain.Interfaces;
 using CSupporter.Modules.Products.Infrastructure.Data;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSupporter.Modules.Products.Infrastructure.Repositories
 {
@@ -18,29 +15,47 @@ namespace CSupporter.Modules.Products.Infrastructure.Repositories
             _csupporterDbContext = csupporterDbContext;
         }
 
-        public Product AddProduct(Product productDto)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Product DeleteProduct(Product productDto)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Product> GetAllProducts()
         {
-            throw new NotImplementedException();
+            return _csupporterDbContext.Products.ToList();
         }
 
         public Product GetProductById(int productId)
         {
-            throw new NotImplementedException();
+            return _csupporterDbContext.Products.Where(product => product.ProductId == productId).FirstOrDefault();
         }
 
-        public Product UpdateProduct(Product productDto)
+        public Product AddProduct(Product product)
         {
-            throw new NotImplementedException();
+            var result = _csupporterDbContext.Products.Add(product);
+            _csupporterDbContext.SaveChanges();
+            var newProduct = _csupporterDbContext.Products.Where(p => p.Name == product.Name).FirstOrDefault();
+            return newProduct;
+        }
+
+        public Product UpdateProduct(Product product)
+        {
+            Product productExist = _csupporterDbContext.Products.Where(product => product.ProductId == product.ProductId).FirstOrDefault();
+
+            if (productExist != null)
+            {
+                _csupporterDbContext.Products.Update(product);
+                _csupporterDbContext.SaveChanges();
+            }
+            return product;
+        }
+        public bool DeleteProduct(int productId)
+        {
+            Product productExist = _csupporterDbContext.Products.Where(product => product.ProductId == productId).FirstOrDefault();
+
+            if (productExist != null)
+            {
+                _csupporterDbContext.Products.Remove(productExist);
+                _csupporterDbContext.SaveChanges();
+                return true;
+            }
+
+            return false;
         }
     }
 }

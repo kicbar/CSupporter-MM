@@ -7,8 +7,8 @@ namespace CSupporter.Modules.Products.Domain.Interfaces
     {
         List<Product> GetAllProducts();
         Product GetProductById(int productId);
-        Product AddProduct(Product productDto);
-        Product UpdateProduct(Product productDto);
-        Product DeleteProduct(Product productDto);
+        Product AddProduct(Product product);
+        Product UpdateProduct(Product product);
+        bool DeleteProduct(int productId);
     }
 }
