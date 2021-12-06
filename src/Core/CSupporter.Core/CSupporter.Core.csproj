@@ -14,8 +14,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\CSupporter.Modules.Contractors\CSupporter.Modules.Contractors.csproj" />
     <ProjectReference Include="..\..\Modules\CSupporter.Modules.Factures\CSupporter.Modules.Factures.csproj" />
-    <ProjectReference Include="..\..\Modules\CSupporter.Modules.Income\CSupporter.Modules.Income.csproj" />
-    <ProjectReference Include="..\..\Modules\CSupporter.Modules.Products\CSupporter.Modules.Products.csproj" />
+    <ProjectReference Include="..\..\Modules\CSupporter.Modules.Income\CSupporter.Modules.Products.csproj" />
+    <ProjectReference Include="..\..\Modules\CSupporter.Modules.Products\CSupporter.Modules.Incomes.csproj" />
     <ProjectReference Include="..\..\Shared\CSupporter.Shared\CSupporter.Shared.csproj" />
   </ItemGroup>
 

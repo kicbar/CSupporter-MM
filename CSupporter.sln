@@ -13,11 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSupporter.Modules.Contract
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSupporter.Modules.Factures", "src\Modules\CSupporter.Modules.Factures\CSupporter.Modules.Factures.csproj", "{CF8BF93B-2397-4F98-8E2C-171FCBE0B36E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSupporter.Modules.Products", "src\Modules\CSupporter.Modules.Products\CSupporter.Modules.Products.csproj", "{D1B377E5-7D8F-42A3-A1B6-CD33E67FAC23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSupporter.Modules.Incomes", "src\Modules\CSupporter.Modules.Products\CSupporter.Modules.Incomes.csproj", "{D1B377E5-7D8F-42A3-A1B6-CD33E67FAC23}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSupporter.Modules.Income", "src\Modules\CSupporter.Modules.Income\CSupporter.Modules.Income.csproj", "{45F48CA9-CD51-4197-8F0A-F06F4BCB0D4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSupporter.Modules.Products", "src\Modules\CSupporter.Modules.Income\CSupporter.Modules.Products.csproj", "{45F48CA9-CD51-4197-8F0A-F06F4BCB0D4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSupporter.Modules.View", "src\Modules\CSupporter.Modules.View\CSupporter.Modules.View.csproj", "{E8B92159-BA9F-443E-B9FC-3AE249856D31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSupporter.Modules.View", "src\Modules\CSupporter.Modules.View\CSupporter.Modules.View.csproj", "{E8B92159-BA9F-443E-B9FC-3AE249856D31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

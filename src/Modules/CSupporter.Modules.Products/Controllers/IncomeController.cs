@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace CSupporter.Modules.Income.Controllers
+namespace CSupporter.Modules.Products.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/income")]
     public class IncomeController : ControllerBase
     {
         private readonly ILogger<IncomeController> _logger;
