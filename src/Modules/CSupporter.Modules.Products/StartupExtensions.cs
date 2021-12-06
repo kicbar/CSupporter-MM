@@ -2,7 +2,6 @@
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo(assemblyName: "CSupporter.Core")]
-
 namespace CSupporter.Modules.Products
 {
     internal static class StartupExtensions
