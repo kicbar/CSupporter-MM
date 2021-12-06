@@ -16,6 +16,8 @@ namespace CSupporter.Shared.Infrastructure
             services.AddHttpClient<IContractorAPIService, ContractorAPIService>();
             services.AddScoped<IContractorAPIService, ContractorAPIService>();
 
+            services.AddHttpClient<IProductAPIService, ProductAPIService>();
+            services.AddScoped<IProductAPIService, ProductAPIService>();
 
             services.AddControllers();
             services.AddScoped<LimitRequestsMiddleware>();

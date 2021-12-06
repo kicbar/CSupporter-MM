@@ -5,30 +5,30 @@ using System.Threading.Tasks;
 
 namespace CSupporter.Shared.Infrastructure.Messages.Services
 {
-    public class ContractorAPIService : RequestSender, IContractorAPIService
+    public class ProductAPIService : RequestSender, IProductAPIService
     {
         private readonly IHttpClientFactory _clientFactory;
 
-        public ContractorAPIService(IHttpClientFactory clientFactory) : base(clientFactory)
+        public ProductAPIService(IHttpClientFactory clientFactory) : base(clientFactory)
         {
             _clientFactory = clientFactory;
         }
 
-        public async Task<T> GetContractorByIdAsync<T>(string contractorId)
+        public async Task<T> GetAllProducts<T>()
         {
             return await this.SendAsync<T>(new APIRequest()
             {
                 ApiType = StaticDetails.ApiType.GET,
-                Url = StaticDetails.CSupporterAPI + "api/contractor/" + contractorId
+                Url = StaticDetails.CSupporterAPI + "api/product"
             });
         }
 
-        public async Task<T> GetAllContractors<T>()
+        public async Task<T> GetProductByIdAsync<T>(int productId)
         {
             return await this.SendAsync<T>(new APIRequest()
             {
                 ApiType = StaticDetails.ApiType.GET,
-                Url = StaticDetails.CSupporterAPI + "api/contractor"
+                Url = StaticDetails.CSupporterAPI + "api/product/" + productId
             });
         }
     }
