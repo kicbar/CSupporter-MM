@@ -16,7 +16,7 @@ namespace CSupporter.Modules.Factures.Domain.Entities
         [Required]
         public DateTime FactureDate { get; set; } = DateTime.Now;
         [Range(1, 1000)]
-        public double Value { get; set; }
+        public double Value { get; set; } = 0;
         [Required]
         public string ContractorId { get; set; }
         public DateTime InsertDate { get; set; } = DateTime.Now;
