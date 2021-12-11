@@ -64,7 +64,7 @@ namespace CSupporter.Modules.View.Services
                 var dto = new ApiResponseDto
                 {
                     DisplayMessage = "Error",
-                    ErrorMessage = new List<string> { Convert.ToString(exc.Message) },
+                    ErrorMessages = new List<string> { Convert.ToString(exc.Message) },
                     IsSuccess = false,
                 };
 
