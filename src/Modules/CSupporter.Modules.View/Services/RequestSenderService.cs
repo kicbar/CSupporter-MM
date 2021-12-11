@@ -1,5 +1,4 @@
-﻿using CSupporter.Modules.Contractors.DTO;
-using CSupporter.Modules.View.Models;
+﻿using CSupporter.Modules.View.Models;
 using CSupporter.Modules.View.Services.IServices;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;

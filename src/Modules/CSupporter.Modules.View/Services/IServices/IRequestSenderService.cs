@@ -1,4 +1,4 @@
-﻿using CSupporter.Modules.Contractors.DTO;
+﻿using CSupporter.Modules.View.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
