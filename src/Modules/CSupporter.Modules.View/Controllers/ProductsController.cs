@@ -11,18 +11,46 @@ namespace CSupporter.Modules.View.Controllers
     public class ProductsController : Controller
     {
         private readonly IProductAPIService _productAPIService;
-        private readonly IProductRequestService _productRequestService;
 
-        public ProductsController(IProductRequestService productRequestService, IProductAPIService productAPIService)
+        public ProductsController(IProductAPIService productAPIService)
         {
             _productAPIService = productAPIService;
-            _productRequestService = productRequestService;
         }
 
         public async Task<IActionResult> ProductsIndex()
         {
             List<ProductDto> contractorsDto = await _productAPIService.SendGetAllRequest();
             return View(contractorsDto);
+        }
+
+        public async Task<IActionResult> ProductCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ContractorCreate(ProductDto productDto)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _productAPIService.SendPostRequest(productDto);
+                if (response != null)
+                {
+                    return RedirectToAction(nameof(ProductsIndex));
+                }
+            }
+            return View(productDto);
+        }
+
+        public async Task<IActionResult> ProductEdit()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> ProductDelete()
+        {
+            return View();
         }
     }
 }

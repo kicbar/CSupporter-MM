@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace CSupporter.Modules.View.Services
@@ -49,9 +50,21 @@ namespace CSupporter.Modules.View.Services
             return productDto;
         }
 
-        public Task<ProductDto> SendPostRequest(ProductDto productDto)
+        public async Task<ProductDto> SendPostRequest(ProductDto productDto)
         {
-            throw new NotImplementedException();
+            var content = new StringContent(JsonConvert.SerializeObject(productDto), Encoding.UTF8, "application/json");
+            using (var httpClient = new HttpClient())
+            {
+                using var response = await httpClient.PostAsync(ApiData.ApiAddress + "/api/product", content);
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                ApiResponseDto apiResponseDto = JsonConvert.DeserializeObject<ApiResponseDto>(apiResponse);
+
+                if (apiResponseDto != null && apiResponseDto.IsSuccess)
+                {
+                    productDto = JsonConvert.DeserializeObject<ProductDto>(Convert.ToString(apiResponseDto.Result));
+                }
+            }
+            return productDto;
         }
 
         public Task<ProductDto> SendUpdateRequest(ProductDto productDto)
