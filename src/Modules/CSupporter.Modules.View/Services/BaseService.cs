@@ -11,12 +11,12 @@ namespace CSupporter.Modules.View.Services
 {
     public class BaseService : IBaseService
     {
-        public ApiResponseDto responseModel { get; set; }
+        public ApiResponseDto ResponseModel { get; set; }
         public IHttpClientFactory httpClient;
 
         public BaseService(IHttpClientFactory httpClient)
         {
-            this.responseModel = new ApiResponseDto();
+            this.ResponseModel = new ApiResponseDto();
             this.httpClient = httpClient;
         }
 
@@ -24,8 +24,8 @@ namespace CSupporter.Modules.View.Services
         {
             try
             {
-                var client = httpClient.CreateClient("CSupporterAPI");
-                HttpRequestMessage message = new HttpRequestMessage();
+                var client = httpClient.CreateClient("CSupporterMM");
+                HttpRequestMessage message = new();
                 message.Headers.Add("Accept", "application/json");
                 message.RequestUri = new Uri(apiRequest.Url);
                 client.DefaultRequestHeaders.Clear();
@@ -46,6 +46,8 @@ namespace CSupporter.Modules.View.Services
                         break;
                     case ApiData.ApiType.DELETE:
                         message.Method = HttpMethod.Delete;
+                        break;
+                    case ApiData.ApiType.GET:
                         break;
                     default:
                         message.Method = HttpMethod.Get;

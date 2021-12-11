@@ -4,7 +4,7 @@ namespace CSupporter.Modules.View.Services.IServices
 {
     public interface IProductRequestService
     {
-        Task<string> GetAllProducts<T>();
-        Task<string> GetProductById<T>(int factureId);
+        Task<T> GetAllProducts<T>();
+        Task<T> GetProductById<T>(int factureId);
     }
 }

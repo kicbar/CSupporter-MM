@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\CSupporter.Shared\CSupporter.Shared.csproj" />
     <ProjectReference Include="..\CSupporter.Modules.Contractors\CSupporter.Modules.Contractors.csproj" />
   </ItemGroup>
 

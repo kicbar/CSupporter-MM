@@ -1,21 +1,36 @@
-﻿using CSupporter.Modules.View.Services.IServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using CSupporter.Modules.View.Models;
+using CSupporter.Modules.View.Services.IServices;
+using System.Net.Http;
 using System.Threading.Tasks;
+using static CSupporter.Modules.View.Models.ApiData;
 
 namespace CSupporter.Modules.View.Services
 {
-    public class FactureRequestService : IFactureRequestService
+    public class FactureRequestService : BaseService, IFactureRequestService
     {
-        public Task<string> GetAllFactures<T>()
+        private readonly IHttpClientFactory _clientFactory;
+
+        public FactureRequestService(IHttpClientFactory clientFactory) : base(clientFactory)
         {
-            throw new NotImplementedException();
+            _clientFactory = clientFactory;
         }
 
-        public Task<string> GetFactureById<T>(int factureId)
+        public async Task<T> GetAllFactures<T>()
         {
-            throw new NotImplementedException();
+            return await this.SendAsync<T>(new ApiRequest()
+            {
+                ApiType = ApiType.GET,
+                Url = ApiAddress + "api/facture"
+            });
+        }
+
+        public async Task<T> GetFactureById<T>(int factureId)
+        {
+            return await this.SendAsync<T>(new ApiRequest()
+            {
+                ApiType = ApiType.GET,
+                Url = ApiAddress + "api/facture/" + factureId
+            });
         }
     }
 }
