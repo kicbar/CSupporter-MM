@@ -20,7 +20,23 @@ namespace CSupporter.Modules.Factures.Application.Services
         public List<FactureDto> GetAllFactures()
         {
             List<Facture> factures = _factureRepository.GetAllFactures();
-            return _mapper.Map<List<FactureDto>>(factures);
+            List<FactureDto> facturesMapped = new();
+
+            foreach (Facture facture in factures)
+            {
+                FactureDto factureDto = new();
+
+                factureDto.FactureId = facture.FactureId;
+                factureDto.FactureNo = facture.FactureNo;
+                factureDto.FactureType = facture.FactureType;
+                factureDto.FactureDate = facture.FactureDate;
+                factureDto.Value = facture.Value;
+                factureDto.ContractorId = facture.ContractorId;
+
+                facturesMapped.Add(factureDto);
+            }
+
+            return facturesMapped;
         }
 
         public FactureDto GetFacture(int factureId)
