@@ -19,6 +19,8 @@ namespace CSupporter.Modules.View
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient<IFactureAPIService, FactureAPIService>();
+            services.AddScoped<IFactureAPIService, FactureAPIService>();
             services.AddHttpClient<IRequestSenderService, RequestSenderService>();
             services.AddScoped<IRequestSenderService, RequestSenderService>();
             services.AddHttpClient<IProductAPIService, ProductAPIService>();
