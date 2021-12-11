@@ -1,9 +1,8 @@
-﻿using CSupporter.Modules.View.Services.IServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using CSupporter.Modules.View.Models;
+using CSupporter.Modules.View.Services.IServices;
 using System.Net.Http;
 using System.Threading.Tasks;
+using static CSupporter.Modules.View.Models.ApiData;
 
 namespace CSupporter.Modules.View.Services
 {
@@ -16,14 +15,22 @@ namespace CSupporter.Modules.View.Services
             _clientFactory = clientFactory;
         }
 
-        public Task<T> GetAllProducts<T>()
+        public async Task<T> GetAllProducts<T>()
         {
-            throw new NotImplementedException();
+            return await this.SendAsync<T>(new ApiRequest()
+            {
+                ApiType = ApiType.GET,
+                Url = ApiAddress + "api/product"
+            });
         }
 
-        public Task<T> GetProductById<T>(int factureId)
+        public async Task<T> GetProductById<T>(int productId)
         {
-            throw new NotImplementedException();
+            return await this.SendAsync<T>(new ApiRequest()
+            {
+                ApiType = ApiType.GET,
+                Url = ApiAddress + "api/product/" + productId
+            });
         }
     }
 }
