@@ -3,4 +3,60 @@
     ViewData["Title"] = "Factures";
 }
 
-<div>Factures work in progress</div>
+<br />
+<br />
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">Factures List</h1>
+        </div>
+        <div class="col text-end pt-1">
+            <a asp-action="FactureCreate" class="btn btn-outline-primary float-right"><i class="fas fa-plus"></i> + Add New Facture</a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    FactureNo
+                </th>
+                <th>
+                    FactureDate
+                </th>
+                <th>
+                    Value
+                </th>
+                <th>
+                    FactureType
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.FactureNo
+                    </td>
+                    <td>
+                        @item.FactureDate
+                    </td>
+                    <td>
+                        @item.Value
+                    </td>
+                    <td>
+                        @item.FactureType
+                    </td>
+                    <td>
+                        <a asp-action="FactureEdit" class="btn btn-success w-auto" asp-route-factureId="@item.FactureId">
+                            Edit
+                        </a>
+                        <a asp-action="FactureDelete" class="btn btn-danger w-auto" asp-route-factureId="@item.FactureId">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

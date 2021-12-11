@@ -1,4 +1,5 @@
-﻿using CSupporter.Modules.View.Services.IServices;
+﻿using CSupporter.Modules.View.Models;
+using CSupporter.Modules.View.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,8 @@ namespace CSupporter.Modules.View.Controllers
 
         public async Task<IActionResult> FacturesIndex()
         {
-            return View();
+            List<FacturesDto> facturesDto = await _factureAPIService.SendGetAllRequest();
+            return View(facturesDto);
         }
 
         public async Task<IActionResult> FactureCreate()
