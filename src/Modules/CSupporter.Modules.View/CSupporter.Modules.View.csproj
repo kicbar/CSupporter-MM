@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\CSupporter.Shared\CSupporter.Shared.csproj" />
     <ProjectReference Include="..\CSupporter.Modules.Contractors\CSupporter.Modules.Contractors.csproj" />
+    <ProjectReference Include="..\CSupporter.Modules.Factures\CSupporter.Modules.Factures.csproj" />
+    <ProjectReference Include="..\CSupporter.Modules.Income\CSupporter.Modules.Products.csproj" />
+    <ProjectReference Include="..\CSupporter.Modules.Products\CSupporter.Modules.Incomes.csproj" />
   </ItemGroup>
 
 </Project>
