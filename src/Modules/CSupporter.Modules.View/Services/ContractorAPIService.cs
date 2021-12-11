@@ -10,15 +10,8 @@ using System.Threading.Tasks;
 
 namespace CSupporter.Modules.View.Services
 {
-    public class RequestSenderService : IRequestSenderService
+    public class ContractorAPIService : IContractorAPIService
     {
-        private readonly ILogger<RequestSenderService> _logger;
-
-        public RequestSenderService(ILogger<RequestSenderService> logger)
-        {
-            _logger = logger;
-        }
-
         public async Task<List<ContractorDto>> SendGetAllRequest()
         {
             List<ContractorDto> contractorList = new ();

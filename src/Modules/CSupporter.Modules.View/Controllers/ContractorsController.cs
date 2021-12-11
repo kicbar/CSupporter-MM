@@ -9,9 +9,9 @@ namespace CSupporter.Modules.View.Controllers
 {
     public class ContractorsController : Controller
     {
-        private readonly IRequestSenderService _requestSenderService;
+        private readonly IContractorAPIService _requestSenderService;
 
-        public ContractorsController(IRequestSenderService requestSenderService)
+        public ContractorsController(IContractorAPIService requestSenderService)
         {
             _requestSenderService = requestSenderService;
         }

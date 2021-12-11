@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CSupporter.Modules.View.Services.IServices
 {
-    public interface IRequestSenderService
+    public interface IContractorAPIService
     {
         Task<List<ContractorDto>> SendGetAllRequest();
         Task<ContractorDto> SendGetRequest(Guid id);

@@ -21,8 +21,8 @@ namespace CSupporter.Modules.View
         {
             services.AddHttpClient<IFactureAPIService, FactureAPIService>();
             services.AddScoped<IFactureAPIService, FactureAPIService>();
-            services.AddHttpClient<IRequestSenderService, RequestSenderService>();
-            services.AddScoped<IRequestSenderService, RequestSenderService>();
+            services.AddHttpClient<IContractorAPIService, ContractorAPIService>();
+            services.AddScoped<IContractorAPIService, ContractorAPIService>();
             services.AddHttpClient<IProductAPIService, ProductAPIService>();
             services.AddScoped<IProductAPIService, ProductAPIService>();
             services.AddControllersWithViews();
