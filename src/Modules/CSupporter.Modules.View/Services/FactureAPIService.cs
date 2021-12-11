@@ -3,7 +3,6 @@ using CSupporter.Modules.View.Services.IServices;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -34,12 +33,7 @@ namespace CSupporter.Modules.View.Services
             {
                 using var response = await httpClient.GetAsync(ApiData.ApiAddress + "/api/facture/details/" + factureId);
                 string apiResponse = await response.Content.ReadAsStringAsync();
-                // tu ponizej sie nie mapuje
-                 factureDto = JsonConvert.DeserializeObject<EntireFactureDto>(apiResponse);
-/*                if (apiResponseDto != null && apiResponseDto.IsSuccess)
-                {
-                    factureDto = JsonConvert.DeserializeObject<EntireFactureDto>(Convert.ToString(apiResponseDto.Result));
-                }*/
+                factureDto = JsonConvert.DeserializeObject<EntireFactureDto>(apiResponse);
             }
             return factureDto;
         }

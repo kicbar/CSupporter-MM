@@ -7,31 +7,116 @@
     <input asp-for="FactureId" hidden />
     <br />
     <div class="container border p-3">
-        <h1 class="text-primary">Edit Facture</h1>
+        <h1 class="text-primary">Facture Details</h1>
 
         <hr />
-        <div class="row">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="col-2">
-                <label asp-for="FactureNo" class="control-label pt-2" style="font-size:20px;"></label>
-                <div>@Model.FactureNo</div>>
-            </div>
-            <div class="col-2">
-                <label asp-for="ContractorLastName" class="control-label pt-2" style="font-size:20px;"></label>
-                <div>@Model.ContractorLastName</div>>
-            </div>
-            <div class="col-2">
-                <label asp-for="FactureType" class="control-label pt-2" style="font-size:20px;"></label>
-                <div>@Model.FactureType</div>>
-            </div>
+        <b>Facture Header</b>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Facture No
+                    </th> 
+                    <th>
+                        Facture Date
+                    </th>
+                    <th>
+                        Facture Value
+                    </th>
+                    <th>
+                        Facture Type
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Model.FactureNo
+                    </td>
+                    <td>
+                        @Model.FactureDate
+                    </td>
+                    <td>
+                        @Model.FactureValue
+                    </td>
+                    <td>
+                        @Model.FactureType
+                    </td>
+            </tbody>
+        </table>
 
-            <div class="col-5 offset-2">
-                <a asp-action="FacturesIndex" class="btn-primary btn form-control ">Back to List</a>
-            </div>
-
-        </div>
-
-        <div>
-        </div>
+        <b>Facture Contractor</b>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Company Name
+                    </th>
+                    <th>
+                        Owner Name
+                    </th>
+                    <th>
+                        NIP
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Model.ContractorCompanyName
+                    </td>
+                    <td>
+                        @Model.ContractorFirstName @Model.ContractorLastName
+                    </td>
+                    <td>
+                        @Model.ContractorNIP
+                    </td>
+                    <td>
+                        @Model.ContractorAddress
+                    </td>
+            </tbody>
+        </table>
+        <b>Positions facture</b>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Positions Number
+                    </th>
+                    <th>
+                        Product Name
+                    </th>
+                    <th>
+                        Product Price
+                    </th>
+                    <th>
+                        Product Amount
+                    </th>
+                </tr>
+            </thead>
+            @{int positionNum = 0; }
+            @foreach (var item in Model.Positions)
+            {
+                <tbody>
+                    <tr>
+                        <td>
+                            @{positionNum = positionNum + 1; }
+                            @positionNum
+                        </td>
+                        <td>
+                            @item.ProductName
+                        </td>
+                        <td>
+                            @item.ProductPrice
+                        </td>
+                        <td>
+                            @item.ProductAmount
+                        </td>
+                </tbody>
+            }
+        </table>
     </div>
 </form>
