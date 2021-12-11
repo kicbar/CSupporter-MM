@@ -27,9 +27,21 @@ namespace CSupporter.Modules.View.Services
             return facturesDto;
         }
 
-        public Task<FacturesDto> SendGetRequest(int factureId)
+        public async Task<EntireFactureDto> SendGetRequest(int factureId)
         {
-            throw new NotImplementedException();
+            EntireFactureDto factureDto = new();
+            using (var httpClient = new HttpClient())
+            {
+                using var response = await httpClient.GetAsync(ApiData.ApiAddress + "/api/facture/details/" + factureId);
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                // tu ponizej sie nie mapuje
+                 factureDto = JsonConvert.DeserializeObject<EntireFactureDto>(apiResponse);
+/*                if (apiResponseDto != null && apiResponseDto.IsSuccess)
+                {
+                    factureDto = JsonConvert.DeserializeObject<EntireFactureDto>(Convert.ToString(apiResponseDto.Result));
+                }*/
+            }
+            return factureDto;
         }
 
         public Task<FacturesDto> SendPostRequest(FacturesDto facturesDto)

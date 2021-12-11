@@ -23,6 +23,13 @@ namespace CSupporter.Modules.View.Controllers
             return View(facturesDto);
         }
 
+
+        public async Task<IActionResult> FactureDetails(int factureId)
+        {
+            EntireFactureDto factureDto = await _factureAPIService.SendGetRequest(factureId);
+            return View(factureDto);
+        }
+
         public async Task<IActionResult> FactureCreate()
         {
             return View();
